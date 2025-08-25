@@ -1,0 +1,9 @@
+<script src="/themes/vendor/libs/jquery/jquery.js"></script>
+<script src="/themes/vendor/libs/popper/popper.js"></script>
+<script src="/themes/vendor/js/bootstrap.js"></script>
+<script src="/themes/vendor/libs/pickr/pickr.js"></script>
+<script src="/themes/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+<script src="/themes/vendor/libs/hammer/hammer.js"></script>
+<script src="/themes/vendor/libs/i18n/i18n.js"></script>
+<script src="/themes/vendor/js/menu.js"></script>
+<script src="/themes/js/main.js"></script>
