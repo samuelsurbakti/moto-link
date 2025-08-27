@@ -2,7 +2,7 @@
 <html lang="{{ app()->getLocale() }}" class="layout-wide customizer-hide" dir="ltr" data-skin="default" data-assets-path="/themes/" data-template="vertical-menu-template" data-bs-theme="light">
 <head>
     <meta charset="UTF-8">
-    <title>{{ $title ?? config('app.name') }} — Auth</title>
+    <title>{{ $title ?? config('app.name') }} - Auth</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     @include('ui.partials.favicon')
