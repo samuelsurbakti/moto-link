@@ -72,8 +72,8 @@ new #[Layout('ui.layouts.auth', [ 'image' => '/src/assets/illustrations/login.sv
 }; ?>
 
 <div class="w-px-400 mx-auto mt-sm-12 mt-8">
-    <h4 class="mb-1">Welcome to Sneat! 👋</h4>
-    <p class="mb-6">Please sign-in to your account and start the adventure</p>
+    <h4 class="mb-1">Selamat Datang! 👋</h4>
+    <p class="mb-6">Masuk untuk mengelola layanan kendaraan Anda.</p>
 
     <form wire:submit.prevent="login" class="mb-6">
         <x-ui::forms.input
@@ -101,7 +101,7 @@ new #[Layout('ui.layouts.auth', [ 'image' => '/src/assets/illustrations/login.sv
             <div class="d-flex justify-content-between">
                 <div class="form-check mb-0">
                     <input class="form-check-input" type="checkbox" id="remember-me" wire:model="remember" />
-                    <label class="form-check-label" for="remember-me">Remember Me</label>
+                    <label class="form-check-label" for="remember-me">Ingat Saya</label>
                 </div>
                 @if (Route::has('password.request'))
                     <a href="auth-forgot-password-cover.html">
@@ -112,7 +112,7 @@ new #[Layout('ui.layouts.auth', [ 'image' => '/src/assets/illustrations/login.sv
         </div>
 
         <x-ui::elements.button type="submit" class="btn-primary w-100 d-grid">
-            Login
+            Masuk
         </x-ui:elements.button>
     </form>
 </div>

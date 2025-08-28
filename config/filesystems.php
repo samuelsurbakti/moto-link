@@ -29,6 +29,12 @@ return [
     */
 
     'disks' => [
+        'src' => [
+            'driver' => 'local',
+            'root' => storage_path('app/src'),
+            'visibility' => 'public',
+            'throw' => false,
+        ],
 
         'local' => [
             'driver' => 'local',

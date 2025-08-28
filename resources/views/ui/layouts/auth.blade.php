@@ -20,7 +20,7 @@
             <span class="app-brand-logo demo">
                 <img src="/src/assets/logo/logo.svg" alt="Logo" class="h-px-34">
             </span>
-            <span class="app-brand-text demo text-heading fw-bold">Accel</span>
+            <span class="app-brand-text demo text-heading fw-bold text-primary">Access</span>
         </a>
 
         {{-- Main auth layout --}}
