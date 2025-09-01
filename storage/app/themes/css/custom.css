@@ -1,0 +1,35 @@
+.btn-reload {
+    position: fixed;
+	top: 180px;
+	right: 0;
+	z-index: 9999;
+	display: block;
+	width: 42px;
+	height: 42px;
+	border-top-left-radius: 15%;
+	border-bottom-left-radius: 15%;
+    background: rgba(51,51,51,0.5);
+	color: #fff !important;
+	text-align: center;
+	font-size: 18px !important;
+	line-height: 42px;
+	opacity: 1;
+}
+
+.btn-back {
+    position: fixed;
+	top: 230px;
+	right: 0;
+	z-index: 9999;
+	display: block;
+	width: 42px;
+	height: 42px;
+	border-top-left-radius: 15%;
+	border-bottom-left-radius: 15%;
+    background: rgba(51,51,51,0.5);
+	color: #fff !important;
+	text-align: center;
+	font-size: 18px !important;
+	line-height: 42px;
+	opacity: 1;
+}

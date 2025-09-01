@@ -1,8 +1,8 @@
 @aware(['isTailwind','isBootstrap','isBootstrap4', 'isBootstrap5', 'localisationPath'])
 @props(['currentRows'])
 @includeWhen(
-    $this->hasConfigurableAreaFor('before-pagination'), 
-    $this->getConfigurableAreaFor('before-pagination'), 
+    $this->hasConfigurableAreaFor('before-pagination'),
+    $this->getConfigurableAreaFor('before-pagination'),
     $this->getParametersForConfigurableArea('before-pagination')
 )
 
@@ -46,15 +46,15 @@
             </div>
         @else
             @if ($this->paginationIsEnabled && $this->isPaginationMethod('standard') && $currentRows->lastPage() > 1)
-                <div class="row mt-3">
-                    <div class="col-12 col-md-6 overflow-auto">
+                <div class="row mt-3 mb-6">
+                    <div class="col-12 col-md-12 overflow-auto">
                         {{ $currentRows->links('livewire-tables::specific.bootstrap-4.pagination') }}
                     </div>
 
                     <div @class([
-                        "col-12 col-md-6 text-center text-muted",
+                        "col-12 col-md-12 text-center text-muted",
                         "text-md-right" => $isBootstrap4,
-                        "text-md-end" => $isBootstrap5,
+                        "text-md-center" => $isBootstrap5,
                         ])>
                         @if($this->showPaginationDetails)
                             <span>{{ __($localisationPath.'Showing') }}</span>
@@ -68,15 +68,15 @@
                     </div>
                 </div>
             @elseif ($this->paginationIsEnabled && $this->isPaginationMethod('simple'))
-                <div class="row mt-3">
-                    <div class="col-12 col-md-6 overflow-auto">
+                <div class="row mt-3 mb-6">
+                    <div class="col-12 col-md-12 overflow-auto">
                         {{ $currentRows->links('livewire-tables::specific.bootstrap-4.simple-pagination') }}
                     </div>
 
                     <div @class([
-                        "col-12 col-md-6 text-center text-muted",
+                        "col-12 col-md-12 text-center text-muted",
                         "text-md-right" => $isBootstrap4,
-                        "text-md-end" => $isBootstrap5,
+                        "text-md-center" => $isBootstrap5,
                     ])>
                         @if($this->showPaginationDetails)
                             <span>{{ __($localisationPath.'Showing') }}</span>
@@ -87,14 +87,14 @@
                     </div>
                 </div>
             @elseif ($this->paginationIsEnabled && $this->isPaginationMethod('cursor'))
-                <div class="row mt-3">
+                <div class="row mt-3 mb-6">
                     <div class="col-12 col-md-6 overflow-auto">
                         {{ $currentRows->links('livewire-tables::specific.bootstrap-4.simple-pagination') }}
                     </div>
                 </div>
             @else
-                <div class="row mt-3">
-                    <div class="col-12 text-muted">
+                <div class="row mt-3 mb-6">
+                    <div class="col-12 text-muted text-center">
                         @if($this->showPaginationDetails)
                             {{ __($localisationPath.'Showing') }}
                             <strong>{{ $currentRows->count() }}</strong>
@@ -108,7 +108,7 @@
 </div>
 
 @includeWhen(
-    $this->hasConfigurableAreaFor('after-pagination'), 
-    $this->getConfigurableAreaFor('after-pagination'), 
+    $this->hasConfigurableAreaFor('after-pagination'),
+    $this->getConfigurableAreaFor('after-pagination'),
     $this->getParametersForConfigurableArea('after-pagination')
 )

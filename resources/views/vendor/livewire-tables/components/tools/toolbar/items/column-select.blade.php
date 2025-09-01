@@ -122,7 +122,7 @@
                 {{
                     $attributes->merge($this->getColumnSelectButtonAttributes())
                     ->class([
-                        'btn dropdown-toggle d-block w-100 d-md-inline' => $this->getColumnSelectButtonAttributes()['default-styling'],
+                        'btn dropdown-toggle d-block w-100 d-md-inline bg-label-dark h-100' => $this->getColumnSelectButtonAttributes()['default-styling'],
                     ])
                     ->except(['default-styling', 'default-colors'])
                 }}

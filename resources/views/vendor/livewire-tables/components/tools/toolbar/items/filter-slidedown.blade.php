@@ -12,10 +12,10 @@
                 'x-transition:leave-end' => 'transform opacity-0',
             ] : [])
             ->class([
-                'container' => $isBootstrap && ($this->getFilterSlidedownWrapperAttributes['default'] ?? true),
+                'px-6 border-top pt-4' => $isBootstrap && ($this->getFilterSlidedownWrapperAttributes['default'] ?? true),
             ])
             ->except(['default','default-colors','default-styling'])
-        }} 
+        }}
 
 >
     @foreach ($this->getFiltersByRow() as $filterRowIndex => $filtersInRow)
@@ -30,7 +30,7 @@
                 'grid grid-cols-12 gap-6 px-4 py-2 mb-2' => $isTailwind && ($defaultAttributes['default-styling'] ?? true),
             ])
             ->except(['default','default-colors','default-styling'])
-        }} 
+        }}
         >
             @foreach ($filtersInRow as $filter)
                 <div

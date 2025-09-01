@@ -1,11 +1,11 @@
 @aware([ 'tableName','isTailwind','isBootstrap','isBootstrap4','isBootstrap5', 'localisationPath'])
 @props([])
 
-<div 
+<div
                 @class([
                     'ml-0 ml-md-2 mb-3 mb-md-0' => $isBootstrap4,
                     'ms-0 ms-md-2 mb-3 mb-md-0' => $isBootstrap5 && $this->searchIsEnabled(),
-                    'mb-3 mb-md-0' => $isBootstrap5 && !$this->searchIsEnabled(),
+                    'mb-2 mb-md-0' => $isBootstrap5 && !$this->searchIsEnabled(),
                 ])
 >
     <div
@@ -23,7 +23,7 @@
             <button
                 type="button"
                 @class([
-                    'btn dropdown-toggle d-block w-100 d-md-inline' => $isBootstrap,
+                    'btn dropdown-toggle d-block w-100 d-md-inline bg-label-dark' => $isBootstrap,
                     'inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-700 dark:text-white dark:border-gray-600 dark:hover:bg-gray-600' => $isTailwind,
                 ])
                 @if ($this->isFilterLayoutPopover()) x-on:click="filterPopoverOpen = !filterPopoverOpen"

@@ -5,7 +5,7 @@
             ->class([
                 'flex flex-cols py-2 space-x-2' => $isTailwind && ($actionWrapperAttributes['default-styling'] ?? true),
                 '' => $isTailwind && ($actionWrapperAttributes['default-colors'] ?? true),
-                'd-flex flex-cols py-2 space-x-2' => $isBootstrap && ($this->actionWrapperAttributes['default-styling'] ?? true),
+                'd-flex flex-cols space-x-2 gap-2' => $isBootstrap && ($this->actionWrapperAttributes['default-styling'] ?? true),
                 '' => $isBootstrap && ($actionWrapperAttributes['default-colors'] ?? true),
                 'justify-start' => $this->getActionsPosition === 'left',
                 'justify-center' => $this->getActionsPosition === 'center',

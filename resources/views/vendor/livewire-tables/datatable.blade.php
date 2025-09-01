@@ -133,7 +133,7 @@
                     @else
                         <x-livewire-tables::table.empty />
                     @endif
-                    
+
 
                     @if ($this->footerIsEnabled() && $this->hasColumnsWithFooter())
                         <x-slot name="tfoot">

@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Support\Str;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
+use App\Traits\ConditionallyVerifiesEmails;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,7 +15,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, HasUuids, SoftDeletes, HasRoles;
+    use HasFactory, Notifiable, HasUuids, SoftDeletes, HasRoles, ConditionallyVerifiesEmails;
 
     /**
      * The attributes that are mass assignable.
@@ -26,6 +27,8 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
+        'registered_by',
+        'email_verified_at',
         'avatar',
         'account_status',
     ];
@@ -63,5 +66,21 @@ class User extends Authenticatable
             ->take(2)
             ->map(fn ($word) => Str::substr($word, 0, 1))
             ->implode('');
+    }
+
+    public function hasVerifiedEmail()
+    {
+        if (!$this->requiresEmailVerification()) {
+            return true; // Tidak perlu verifikasi, dianggap sudah terverifikasi
+        }
+
+        return !is_null($this->email_verified_at);
+    }
+
+    public function sendEmailVerificationNotification()
+    {
+        if ($this->requiresEmailVerification()) {
+            parent::sendEmailVerificationNotification();
+        }
     }
 }

@@ -5,7 +5,7 @@
     <div class="rounded-md shadow-sm">
     @endif
         <select multiple
-            {!! $filter->getWireMethod('filterComponents.'.$filter->getKey()) !!} {{ 
+            {!! $filter->getWireMethod('filterComponents.'.$filter->getKey()) !!} {{
                 $filterInputAttributes->merge([
                     'wire:key' => $filter->generateWireKey($tableName, 'multiselectdropdown'),
                 ])
@@ -13,9 +13,9 @@
                     'block w-full transition duration-150 ease-in-out rounded-md shadow-sm focus:ring focus:ring-opacity-50' => $isTailwind && ($filterInputAttributes['default-styling'] ?? true),
                     'border-gray-300 focus:border-indigo-300 focus:ring-indigo-200 dark:bg-gray-800 dark:text-white dark:border-gray-600' => $isTailwind && ($filterInputAttributes['default-colors'] ?? true),
                     'form-control' => $isBootstrap4 && ($filterInputAttributes['default-styling'] ?? true),
-                    'form-select' => $isBootstrap5 && ($filterInputAttributes['default-styling'] ?? true),
+                    'form-select select2' => $isBootstrap5 && ($filterInputAttributes['default-styling'] ?? true),
                 ])
-                ->except(['default-styling','default-colors']) 
+                ->except(['default-styling','default-colors'])
             }}>
         @if ($filter->getFirstOption() !== '')
             <option @if($filter->isEmpty($this)) selected @endif value="all">{{ $filter->getFirstOption()}}</option>

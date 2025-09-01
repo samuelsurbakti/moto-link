@@ -27,14 +27,12 @@
             @include($this->getLoadingPlaceHolderBlade(), ['colCount' => $colCount])
         @else
             <div class="h-min self-center align-middle text-center">
-                <div class="lds-hourglass"{{
-                        $attributes->merge($loaderIcon)
-                            ->class([
-                                'lds-hourglass' => $isTailwind && ($loaderIcon['default'] ?? true),
-                                'lds-hourglass' => $isBootstrap && ($loaderIcon['default'] ?? true),
-                            ])
-                            ->except(['default','default-styling','default-colors'])
-                }}></div>
+                <div class="d-flex h-px-100 justify-content-center align-items-center mb-4">
+                    <div class="sk-swing w-px-75 h-px-75">
+                        <div class="sk-swing-dot"></div>
+                        <div class="sk-swing-dot"></div>
+                    </div>
+                </div>
                 <div>{!! $this->getLoadingPlaceholderContent() !!}</div>
             </div>
         @endif

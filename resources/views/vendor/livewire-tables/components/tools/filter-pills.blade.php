@@ -7,13 +7,13 @@
 ])
 ->class([
     'mb-4 px-4 md:p-0' => $isTailwind,
-    'mb-3' => $isBootstrap,
+    'my-5 d-flex gap-2 px-6' => $isBootstrap,
 ])
 
 }}>
     <small @class([
         'text-gray-700 dark:text-white' => $isTailwind,
-        '' =>  $isBootstrap,
+        'align-self-center' =>  $isBootstrap,
     ])>
         {{ __($localisationPath.'Applied Filters') }}:
     </small>

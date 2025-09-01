@@ -11,12 +11,12 @@ Route::domain('access.moto-link.test')->group(function () {
     });
 // , 'log_page_view'
     Route::group(['middleware' => ['auth']], function () {
-        Volt::route('gate', 'Access.gate.index')->name('Access | Gate');
+        Volt::route('gate', 'access.gate.index')->name('Access | Gate');
 
-        Volt::route('account', 'Access.account.index')->name('Access | Account');
+        Volt::route('account', 'access.account.index')->name('Access | Account');
 
-        Volt::route('system', 'Access.system.index')->name('Access | System');
+        Volt::route('system', 'access.system.index')->name('Access | System');
 
-        Volt::route('authorization', 'Access.authorization.index')->name('Access | Authorization');
+        Volt::route('authorization', 'access.authorization.index')->name('Access | Authorization');
     });
 });
