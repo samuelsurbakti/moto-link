@@ -17,6 +17,13 @@ class TableHelper
         return $return;
     }
 
+    public static function role_in_account($user)
+    {
+        $return = '<span class="badge rounded-pill" style="background-color: color-mix(in sRGB, #fff 84%, #'.$user->roles->first()->badge_color.') !important; color: #'.$user->roles->first()->badge_color.' !important;">'.$user->roles->first()->name.'</span>';
+
+        return $return;
+    }
+
     public static function action_buttons(
         string $recordId,
         array $permissions,

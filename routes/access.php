@@ -13,7 +13,13 @@ Route::domain('access.moto-link.test')->group(function () {
     Route::group(['middleware' => ['auth']], function () {
         Volt::route('gate', 'access.gate.index')->name('Access | Gate');
 
-        Volt::route('account', 'access.account.index')->name('Access | Account');
+        Route::group(['middleware' => ['permission:Access - Akun'], 'prefix' => 'account'], function () {
+            Volt::route('', 'access.account.index')->name('Access | Account');
+
+            Route::group(['middleware' => ['permission:Access - Akun - Melihat Data'], 'prefix' => '{id}'], function () {
+                Volt::route('', 'access.account.show')->name('Access | Account | Show');
+            });
+        });
 
         Volt::route('system', 'access.system.index')->name('Access | System');
 
