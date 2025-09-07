@@ -7,6 +7,7 @@ use Livewire\Volt\Component;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Validate;
 use Laravolt\Avatar\Facade as Avatar;
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 
 new class extends Component {
     public $options_role = [];
@@ -19,16 +20,16 @@ new class extends Component {
     #[Validate('required|string', as: 'Nama')]
     public $account_name;
 
-    #[Validate('required|string', as: 'Username')]
+    #[Validate(as: 'Username')]
     public $account_username;
 
-    #[Validate('required|string|email', as: 'Email')]
+    #[Validate(as: 'Email')]
     public $account_email;
 
-    #[Validate('required|string', as: 'Password')]
+    #[Validate(as: 'Password')]
     public $account_password;
 
-    #[Validate('required|string', as: 'Konfirmasi Password')]
+    #[Validate(as: 'Konfirmasi Password')]
     public $account_re_password;
 
     public function rules(): array
@@ -43,8 +44,20 @@ new class extends Component {
             'account_email' => [
                 'required',
                 'string',
+                'email',
                 Rule::unique('users', 'email')
                     ->ignore($this->account_id),
+            ],
+            'account_password' => [
+                'nullable',
+                'string',
+                Rule::requiredIf(!$this->account_id),
+            ],
+            'account_re_password' => [
+                'nullable',
+                'string',
+                'same:account_password',
+                Rule::requiredIf(!$this->account_id),
             ],
         ];
     }
@@ -97,6 +110,8 @@ new class extends Component {
                 'avatar' => $avatar.'.png',
                 'account_status' => 1,
             ]);
+
+            $account->assignRole($this->account_role);
         } else {
             $account = User::findOrFail($this->account_id);
 
@@ -111,7 +126,7 @@ new class extends Component {
         $this->dispatch('refreshDatatable');
 
         LivewireAlert::title('')
-            ->text('Berhasil ' . (is_null($this->account_id) ? 'menambah' : 'mengubah') . ' Izin')
+            ->text('Berhasil ' . (is_null($this->account_id) ? 'menambah' : 'mengubah') . ' Akun')
             ->success()
             ->toast()
             ->position('bottom-end')

@@ -38,6 +38,45 @@ class PermissionSeeder extends Seeder
                     'number' => $menu_number++,
                 ]);
 
+                if($app->name == 'Access' && $menu->title == 'Akun')
+                {
+                    Permission::create([
+                        'type' => 'Permission',
+                        'app_id' => $app->id,
+                        'menu_id' => $menu->id,
+                        'name' => $app->name.' - '.$menu->title.' - Melihat Daftar Data',
+                        'guard_name' => 'web',
+                        'number' => 11,
+                    ]);
+
+                    Permission::create([
+                        'type' => 'Permission',
+                        'app_id' => $app->id,
+                        'menu_id' => $menu->id,
+                        'name' => $app->name.' - '.$menu->title.' - Melihat Data',
+                        'guard_name' => 'web',
+                        'number' => 12,
+                    ]);
+
+                    Permission::create([
+                        'type' => 'Permission',
+                        'app_id' => $app->id,
+                        'menu_id' => $menu->id,
+                        'name' => $app->name.' - '.$menu->title.' - Menambah Data',
+                        'guard_name' => 'web',
+                        'number' => 13,
+                    ]);
+
+                    Permission::create([
+                        'type' => 'Permission',
+                        'app_id' => $app->id,
+                        'menu_id' => $menu->id,
+                        'name' => $app->name.' - '.$menu->title.' - Mengubah Data',
+                        'guard_name' => 'web',
+                        'number' => 14,
+                    ]);
+                }
+
                 if($app->name == 'Access' && $menu->title == 'Otorisasi')
                 {
                     Permission::create([
