@@ -45,8 +45,8 @@ new #[Layout('ui.layouts.horizontal')] class extends Component {
                                     class="nav-link active"
                                     role="tab"
                                     data-bs-toggle="tab"
-                                    data-bs-target="#navs-pills-justified-home"
-                                    aria-controls="navs-pills-justified-home"
+                                    data-bs-target="#nav-account-activity-log"
+                                    aria-controls="nav-account-activity-log"
                                     aria-selected="true"
                                 >
                                     <span class="d-none d-sm-inline-flex align-items-center">
@@ -76,7 +76,7 @@ new #[Layout('ui.layouts.horizontal')] class extends Component {
                         @endcan
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane fade show active" id="navs-pills-justified-home" role="tabpanel">
+                        <div class="tab-pane fade show active" id="nav-account-activity-log" role="tabpanel">
                             <p>
                             Icing pastry pudding oat cake. Lemon drops cotton candy caramels cake caramels sesame snaps powder. Bear
                             claw candy topping.
