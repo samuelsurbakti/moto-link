@@ -10,7 +10,7 @@ Route::domain('access.moto-link.test')->group(function () {
         return redirect(route('Access | Gate'));
     });
 // , 'log_page_view'
-    Route::group(['middleware' => ['auth']], function () {
+    Route::group(['middleware' => ['auth', 'log_page_view']], function () {
         Volt::route('gate', 'access.gate.index')->name('Access | Gate');
 
         Route::group(['middleware' => ['permission:Access - Akun'], 'prefix' => 'account'], function () {

@@ -68,13 +68,10 @@ new class extends Component {
         $this->account_id = $account_id;
         $account = User::findOrFail($this->account_id);
 
-        $this->account_type = $account->type;
-        $this->account_app_id = $account->app_id;
-        $this->menus = Menu::where('app_id', $this->account_app_id)->orderBy('order_number')->get();
-        $this->account_menu_id = $account->menu_id;
-
+        $this->set_account_field('account_role', $account->getRoleNames()->first());
         $this->account_name = $account->name;
-        $this->account_number = $account->number;
+        $this->account_username = $account->username;
+        $this->account_email = $account->email;
     }
 
     public function reset_account()

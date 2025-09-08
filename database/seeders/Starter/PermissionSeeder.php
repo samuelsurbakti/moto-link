@@ -75,6 +75,33 @@ class PermissionSeeder extends Seeder
                         'guard_name' => 'web',
                         'number' => 14,
                     ]);
+
+                    Permission::create([
+                        'type' => 'Permission',
+                        'app_id' => $app->id,
+                        'menu_id' => $menu->id,
+                        'name' => $app->name.' - '.$menu->title.' - Melihat Log Aktivitas',
+                        'guard_name' => 'web',
+                        'number' => 21,
+                    ]);
+
+                    Permission::create([
+                        'type' => 'Permission',
+                        'app_id' => $app->id,
+                        'menu_id' => $menu->id,
+                        'name' => $app->name.' - '.$menu->title.' - Melihat Izin Khusus',
+                        'guard_name' => 'web',
+                        'number' => 31,
+                    ]);
+
+                    Permission::create([
+                        'type' => 'Permission',
+                        'app_id' => $app->id,
+                        'menu_id' => $menu->id,
+                        'name' => $app->name.' - '.$menu->title.' - Mengelola Izin Khusus',
+                        'guard_name' => 'web',
+                        'number' => 32,
+                    ]);
                 }
 
                 if($app->name == 'Access' && $menu->title == 'Otorisasi')

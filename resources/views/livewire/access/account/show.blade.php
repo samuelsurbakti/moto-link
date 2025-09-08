@@ -1,6 +1,5 @@
 <?php
 
-use Carbon\Carbon;
 use App\Models\User;
 use Livewire\Volt\Component;
 use Livewire\Attributes\Layout;
@@ -14,55 +13,107 @@ new #[Layout('ui.layouts.horizontal')] class extends Component {
     }
 }; ?>
 
+@push('page_styles')
+    <link rel="stylesheet" href="/themes/vendor/libs/animate-css/animate.css" />
+    <link rel="stylesheet" href="/themes/vendor/libs/sweetalert2/sweetalert2.css" />
+
+    {{-- Select2 --}}
+    <link rel="stylesheet" href="/themes/vendor/libs/select2/select2.css" />
+@endpush
+
+@push('page_scripts')
+    <script src="/themes/vendor/libs/sweetalert2/sweetalert2.js"></script>
+
+    {{-- Select2 --}}
+    <script src="/themes/vendor/libs/select2/select2.js"></script>
+@endpush
+
 <div class="container-xxl flex-grow-1 container-p-y">
-    <div class="row">
-        <div class="col-xl-4 col-lg-5 col-md-5 order-1 order-md-0">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <div class="user-avatar-section">
-                        <div class=" d-flex align-items-center flex-column">
-                            <img src="{{ asset('src/img/user/'.$account->avatar) }}" alt="User Image" class="img-fluid rounded my-4" width="110" height="110" />
-                            <div class="user-info text-center">
-                                <h4 class="mb-2">{{ $account->name }}</h4>
-                                <span class="badge rounded-pill" style="background-color: color-mix(in sRGB, #fff 84%, #{{ $account->roles->first()->badge_color}}) !important; color: #{{ $account->roles->first()->badge_color}} !important;">{{ $account->getRoleNames()->first() ?? '-' }}</span>
-                            </div>
+    <div class="row g-6">
+        <div class="col-xl-4 col-lg-5 col-md-5 order-0 order-md-0">
+            <livewire:access.account.card-detail :account="$account" />
+        </div>
+
+        <div class="col-xl-8 col-lg-7 col-md-7 order-1 order-md-1">
+            @canany(['Access - Akun - Melihat Izin Khusus', 'Access - Akun - Melihat Log Aktivitas'])
+                <div class="nav-align-top">
+                    <ul class="nav nav-pills mb-4 nav-fill" role="tablist">
+                        @can('Access - Akun - Melihat Log Aktivitas')
+                            <li class="nav-item mb-1 mb-sm-0">
+                                <button
+                                    type="button"
+                                    class="nav-link active"
+                                    role="tab"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#navs-pills-justified-home"
+                                    aria-controls="navs-pills-justified-home"
+                                    aria-selected="true"
+                                >
+                                    <span class="d-none d-sm-inline-flex align-items-center">
+                                        <i class="icon-base bx bx-list-ul icon-sm me-1_5"></i>Log Aktivitas
+                                    </span>
+                                    <i class="icon-base bx bx-list-ul icon-sm d-sm-none"></i>
+                                </button>
+                            </li>
+                        @endcan
+                        @can('Access - Akun - Melihat Izin Khusus')
+                            <li class="nav-item mb-1 mb-sm-0">
+                                <button
+                                    type="button"
+                                    class="nav-link"
+                                    role="tab"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#navs-pills-justified-profile"
+                                    aria-controls="navs-pills-justified-profile"
+                                    aria-selected="false"
+                                >
+                                    <span class="d-none d-sm-inline-flex align-items-center">
+                                        <i class="icon-base bx bx-shield-plus icon-sm me-1_5"></i>Izin Khusus
+                                    </span>
+                                    <i class="icon-base bx bx-shield-plus icon-sm d-sm-none"></i>
+                                </button>
+                            </li>
+                        @endcan
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="navs-pills-justified-home" role="tabpanel">
+                            <p>
+                            Icing pastry pudding oat cake. Lemon drops cotton candy caramels cake caramels sesame snaps powder. Bear
+                            claw candy topping.
+                            </p>
+                            <p class="mb-0">
+                            Tootsie roll fruitcake cookie. Dessert topping pie. Jujubes wafer carrot cake jelly. Bonbon jelly-o
+                            jelly-o ice cream jelly beans candy canes cake bonbon. Cookie jelly beans marshmallow jujubes sweet.
+                            </p>
                         </div>
-                    </div>
-                    <div class="d-flex justify-content-start flex-wrap my-4 py-3">
-                        <div class="d-flex align-items-start me-4 mt-3 gap-3">
-                            <span class="badge bg-label-primary p-2 rounded"><i class="bx bx-calendar-check bx-sm"></i></span>
-                            <div>
-                                <h5 class="mb-0">{{ Carbon::parse($account->created_at)->isoFormat('D MMMM Y') }}</h5>
-                                <span>{{ Carbon::parse($account->created_at)->diffForHumans() }}</span>
-                            </div>
+                        <div class="tab-pane fade" id="navs-pills-justified-profile" role="tabpanel">
+                            <p>
+                            Donut dragée jelly pie halvah. Danish gingerbread bonbon cookie wafer candy oat cake ice cream. Gummies
+                            halvah tootsie roll muffin biscuit icing dessert gingerbread. Pastry ice cream cheesecake fruitcake.
+                            </p>
+                            <p class="mb-0">
+                            Jelly-o jelly beans icing pastry cake cake lemon drops. Muffin muffin pie tiramisu halvah cotton candy
+                            liquorice caramels.
+                            </p>
                         </div>
-                    </div>
-                    <h5 class="pb-2 border-bottom mb-4">Detail</h5>
-                    <div class="info-container">
-                        <ul class="list-unstyled">
-                            <li class="mb-3">
-                                <span class="fw-bold me-2">Username:</span>
-                                <span>{{ $account->username }}</span>
-                            </li>
-                            <li class="mb-3">
-                                <span class="fw-bold me-2">Email:</span>
-                                <span>{{ $account->email }}</span>
-                            </li>
-                            <li class="mb-3">
-                                <span class="fw-bold me-2">Status:</span>
-                                <span class="badge rounded-pill {{($account->account_status == 1 ? 'bg-label-success' : 'bg-label-danger')}}">{{($account->account_status == 1 ? 'Aktif' : 'Tidak Aktif')}}</span>
-                            </li>
-                        </ul>
-                        <div class="d-flex justify-content-center pt-3">
-                            <button id="btn_edit_user" value="{{ $account->id }}" class="btn btn-primary me-3" data-bs-target="#modal_resource" data-bs-toggle="modal">Ubah</button>
-                            <a href="javascript:;" class="btn btn-label-danger suspend-user">Suspended</a>
+                        <div class="tab-pane fade" id="navs-pills-justified-messages" role="tabpanel">
+                            <p>
+                            Oat cake chupa chups dragée donut toffee. Sweet cotton candy jelly beans macaroon gummies cupcake gummi
+                            bears cake chocolate.
+                            </p>
+                            <p class="mb-0">
+                            Cake chocolate bar cotton candy apple pie tootsie roll ice cream apple pie brownie cake. Sweet roll icing
+                            sesame snaps caramels danish toffee. Brownie biscuit dessert dessert. Pudding jelly jelly-o tart brownie
+                            jelly.
+                            </p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="col-xl-8 col-lg-7 col-md-7 order-0 order-md-1">
+            @endcanany
         </div>
     </div>
+
+    @can('Access - Akun - Mengubah Data')
+        <livewire:access.account.modal-resource />
+    @endcan
 </div>
