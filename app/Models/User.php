@@ -75,8 +75,18 @@ class User extends Authenticatable
         return LogOptions::defaults()
             ->logFillable()
             ->logOnlyDirty()
-            ->useLogName('Akun')
-            ->setDescriptionForEvent(fn(string $eventName) => ($eventName == 'created' ? 'Menambah' : ($eventName == 'updated' ? 'Mengubah' : 'Menghapus')))
+            ->useLogName('Mengelola Akun')
+            ->dontSubmitEmptyLogs()
+            ->setDescriptionForEvent(function (string $eventName) {
+                $action = match($eventName) {
+                    'created' => 'Menambah',
+                    'updated' => 'Mengubah',
+                    'deleted' => 'Menghapus',
+                    default => $eventName
+                };
+
+                return "{$action} data akun dengan nama [{$this->name}]";
+            })
             ->dontLogIfAttributesChangedOnly(['created_at', 'updated_at', 'deleted_at']);
     }
 

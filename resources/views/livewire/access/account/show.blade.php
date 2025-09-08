@@ -75,17 +75,8 @@ new #[Layout('ui.layouts.horizontal')] class extends Component {
                             </li>
                         @endcan
                     </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active" id="nav-account-activity-log" role="tabpanel">
-                            <p>
-                            Icing pastry pudding oat cake. Lemon drops cotton candy caramels cake caramels sesame snaps powder. Bear
-                            claw candy topping.
-                            </p>
-                            <p class="mb-0">
-                            Tootsie roll fruitcake cookie. Dessert topping pie. Jujubes wafer carrot cake jelly. Bonbon jelly-o
-                            jelly-o ice cream jelly beans candy canes cake bonbon. Cookie jelly beans marshmallow jujubes sweet.
-                            </p>
-                        </div>
+                    <div class="tab-content p-0 bg-body border-0 shadow-none">
+                        <livewire:access.account.tab-activity-log :account="$account" />
                         <div class="tab-pane fade" id="navs-pills-justified-profile" role="tabpanel">
                             <p>
                             Donut dragée jelly pie halvah. Danish gingerbread bonbon cookie wafer candy oat cake ice cream. Gummies

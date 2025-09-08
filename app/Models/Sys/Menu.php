@@ -22,8 +22,18 @@ class Menu extends Model
         return LogOptions::defaults()
             ->logFillable()
             ->logOnlyDirty()
-            ->useLogName('Menu')
-            ->setDescriptionForEvent(fn(string $eventName) => ($eventName == 'created' ? 'Menambah' : ($eventName == 'updated' ? 'Mengubah' : 'Menghapus')))
+            ->useLogName('Mengelola Menu')
+            ->dontSubmitEmptyLogs()
+            ->setDescriptionForEvent(function (string $eventName) {
+                $action = match($eventName) {
+                    'created' => 'Menambah',
+                    'updated' => 'Mengubah',
+                    'deleted' => 'Menghapus',
+                    default => $eventName
+                };
+
+                return "{$action} data menu dengan judul [{$this->title}]";
+            })
             ->dontLogIfAttributesChangedOnly(['created_at', 'updated_at', 'deleted_at']);
     }
 

@@ -1,4 +1,5 @@
 @props([
+    'name' => $attributes->get('name') ?? $attributes->get('wire:model') ?? $attributes->get('wire:model.live'),
     'label' => null,
     'type' => 'password',
     'id' => $attributes->get('id') ?? $attributes->get('name'),
@@ -7,8 +8,7 @@
 ])
 
 @php
-    $name = $attributes->get('name');
-    $hasError = $name && $errors->has($name);
+    $hasError = $errors->has($name);
     $inputId = $id ?? Str::uuid();
 @endphp
 

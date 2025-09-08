@@ -49,15 +49,13 @@ new class extends Component {
                     ->ignore($this->account_id),
             ],
             'account_password' => [
-                'nullable',
+                'required',
                 'string',
-                Rule::requiredIf(!$this->account_id),
             ],
             'account_re_password' => [
-                'nullable',
+                'required',
                 'string',
                 'same:account_password',
-                Rule::requiredIf(!$this->account_id),
             ],
         ];
     }
@@ -103,7 +101,7 @@ new class extends Component {
                 'name' => $this->account_name,
                 'username' => $this->account_username,
                 'email' => $this->account_email,
-                'password' => $this->account_password,
+                'password' => bcrypt($this->account_password),
                 'avatar' => $avatar.'.png',
                 'account_status' => 1,
             ]);
@@ -182,8 +180,8 @@ new class extends Component {
     />
 
     <x-ui::forms.input-toggle
-        id="password"
-        name="password"
+        id="account_password"
+        name="account_password"
         label="Password"
         placeholder="••••••••"
         wire:model="account_password"
@@ -195,8 +193,8 @@ new class extends Component {
     </x-ui::forms.input-toggle>
 
     <x-ui::forms.input-toggle
-        id="re_password"
-        name="re_password"
+        id="account_re_password"
+        name="account_re_password"
         label="Konfirmasi Password"
         placeholder="••••••••"
         wire:model="account_re_password"

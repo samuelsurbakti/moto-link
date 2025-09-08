@@ -22,8 +22,18 @@ class App extends Model
         return LogOptions::defaults()
             ->logFillable()
             ->logOnlyDirty()
-            ->useLogName('App')
-            ->setDescriptionForEvent(fn(string $eventName) => ($eventName == 'created' ? 'Menambah' : ($eventName == 'updated' ? 'Mengubah' : 'Menghapus')))
+            ->useLogName('Mengelola App')
+            ->dontSubmitEmptyLogs()
+            ->setDescriptionForEvent(function (string $eventName) {
+                $action = match($eventName) {
+                    'created' => 'Menambah',
+                    'updated' => 'Mengubah',
+                    'deleted' => 'Menghapus',
+                    default => $eventName
+                };
+
+                return "{$action} data app dengan nama [{$this->name}]";
+            })
             ->dontLogIfAttributesChangedOnly(['created_at', 'updated_at', 'deleted_at']);
     }
 
