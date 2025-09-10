@@ -17,21 +17,21 @@ class AppSeeder extends Seeder
 
         App::create([
             'name' => 'Access',
-            'subdomain' => 'access.moto-link.test',
+            'subdomain' => 'access.samuelsurbakti.my.id',
             'image' => 'access',
             'order_number' => $app_no++
         ]);
 
         App::create([
             'name' => 'MotoLink',
-            'subdomain' => 'moto-link.moto-link.test',
+            'subdomain' => 'moto-link.samuelsurbakti.my.id',
             'image' => 'moto-link',
             'order_number' => $app_no++
         ]);
 
         App::create([
             'name' => 'CMS',
-            'subdomain' => 'cms.moto-link.test',
+            'subdomain' => 'cms.samuelsurbakti.my.id',
             'image' => 'cms',
             'order_number' => $app_no++
         ]);

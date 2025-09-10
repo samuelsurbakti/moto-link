@@ -1,6 +1,6 @@
 @props(['menu'])
 
-<li class="menu-item{{ request()->path() == $menu->url ? ' active' : '' }}">
+<li class="menu-item{{ str_contains(request()->path(), $menu->url) ? ' active' : '' }}">
     <a href="{{ $menu->get_child->count() != 0 ? 'javascript:void(0);' : 'http://'.$menu->app->subdomain.'/'.$menu->url}}" class="menu-link {{ $menu->get_child->count() != 0 ? 'menu-toggle' : '' }}">
         <i class="menu-icon icon-base {{ $menu->icon }}"></i>
         <div data-i18n="{{ $menu->title }}">{{ $menu->title }}</div>

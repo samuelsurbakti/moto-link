@@ -3,7 +3,7 @@
 use Livewire\Volt\Volt;
 use Illuminate\Support\Facades\Route;
 
-Route::domain('access.moto-link.test')->group(function () {
+Route::domain('access.samuelsurbakti.my.id')->group(function () {
     require __DIR__.'/auth.php';
 
     Route::get('/', function () {
